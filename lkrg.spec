@@ -1,5 +1,5 @@
 Name:           lkrg
-Version:        0.9.1
+Version:        0.9.3
 Release:        1%{?dist}
 
 Summary:        Kernel module for Linux Kernel Runtime Guard (LKRG)
@@ -42,13 +42,13 @@ for doc in README LICENSE CHANGES CONCEPTS PERFORMANCE ; do
     install -D -m 0664 ${doc} ${RPM_BUILD_ROOT}/%{_pkgdocdir}/${doc}
 done
 
-install -D -m 0664 scripts/bootup/lkrg.conf "$RPM_BUILD_ROOT"/etc/sysctl.d/lkrg.conf
+install -D -m 0664 scripts/bootup/lkrg.conf "$RPM_BUILD_ROOT"/etc/sysctl.d/01-lkrg.conf
 install -D -m 0664 scripts/bootup/systemd/lkrg.service "$RPM_BUILD_ROOT"/%{_unitdir}/lkrg.service
 
 
 %files
 %doc README LICENSE CHANGES CONCEPTS PERFORMANCE
-/etc/sysctl.d/lkrg.conf
+/etc/sysctl.d/01-lkrg.conf
 %{_unitdir}/lkrg.service
 
 
@@ -61,5 +61,8 @@ install -D -m 0664 scripts/bootup/systemd/lkrg.service "$RPM_BUILD_ROOT"/%{_unit
 
 
 %changelog
+* Thu May 26 2022 Frédéric Pierret (fepitre) <frederic.pierret@qubes-os.org> - 0.9.3-1
+- version 0.9.3-1.
+
 * Sat Dec 04 2021 Frédéric Pierret (fepitre) <frederic.pierret@qubes-os.org> - 0.9.1-1
 - Initial RPM packaging.
