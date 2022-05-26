@@ -6,8 +6,8 @@ Summary:        Kernel module for Linux Kernel Runtime Guard (LKRG)
 License:        GPLv2
 URL:            https://www.openwall.com/lkrg
 
-Source0:        lkrg-%{version}.tar.gz
-Source1:        lkrg-%{version}.tar.gz.sign
+Source0:        https://www.openwall.com/lkrg/lkrg-%{version}.tar.gz
+Source1:        https://www.openwall.com/lkrg/lkrg-%{version}.tar.gz.sign
 Source2:        lkrg-signing-key.asc
 
 BuildRequires:  gnupg2
@@ -58,10 +58,6 @@ install -D -m 0664 scripts/bootup/systemd/lkrg.service "$RPM_BUILD_ROOT"/%{_unit
 
 %preun
 %systemd_preun lkrg.service
-
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
